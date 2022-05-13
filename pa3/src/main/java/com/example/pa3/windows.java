@@ -1,4 +1,4 @@
-package com.example.pa2;
+package com.example.pa3;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +18,8 @@ import java.sql.SQLException;
 
 
 
-@WebServlet("/nswitch")
-public class nswitch extends HttpServlet
+@WebServlet("/windows")
+public class windows extends HttpServlet
 {
     
 
@@ -33,7 +33,7 @@ public class nswitch extends HttpServlet
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "game_db", "root", "Mal3k$aM");
         Statement stmt = con.createStatement();
-        String sql = "SELECT * FROM games WHERE platform = 'Switch'";
+        String sql = "SELECT * FROM games WHERE platform = 'Windows'";
         ResultSet rs = stmt.executeQuery(sql);
 
         response.setContentType("text/html");
@@ -45,7 +45,7 @@ public class nswitch extends HttpServlet
         out.println("<div class=\"switchsection\">");
         out.println("<div class=\"cards\">");
         out.println("<div class=\"switch-products\">");
-        out.println("<h1>Nintendo Switch Products</h1></div>");
+        out.println("<h1>PC Products</h1></div>");
         while(rs.next()){                  
         out.println("<div class=\"card\">");
         out.println("<div class=\"image-section\">");
@@ -54,15 +54,12 @@ public class nswitch extends HttpServlet
             String prodname = rs.getString("name");
             String prodPrice = rs.getString("price");
             out.println("<img src=" + imglocation + "></div>");
-            out.println("<div class=\"description\">");
 //<a href="#popupkart">
 //<img src="./switch/kart.jpeg" alt="Mario Kart">
 //</a>
+            out.println("<div class=\"description\">");
 //"<h1>Mario Kart</h1>
 //<p><b>Price:</b><span>$49.99</span><del>$59.99</del></p></div>
-
-
-
             out.println("<h1>" + prodname + "</h1></div>");
             out.println("<p><b>Price: </b><span>" + prodPrice + "</span></p>");
         //out.println("<div class=\"button-group\">");
@@ -81,10 +78,7 @@ public class nswitch extends HttpServlet
        out.println("<form  action=\"productdetails\" method=\"GET\">");
        out.println("<input type=hidden id=gameId name=gameId value="+ gameId +">");
        out.println("<input type=submit value=Details>");               
-       //out.println("<div class='button-group'><a href=\"productdetails\" class = 'buy' name = detailbutton value=" + gameId +">Product Details</button></div>");
-
        out.println("</form></div>"); 
-
     }}
     catch(ClassNotFoundException e){
         e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.example.pa2;
+package com.example.pa3;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +18,8 @@ import java.sql.SQLException;
 
 
 
-@WebServlet("/windows")
-public class windows extends HttpServlet
+@WebServlet("/playstation")
+public class playstation extends HttpServlet
 {
     
 
@@ -33,7 +33,7 @@ public class windows extends HttpServlet
         Class.forName("com.mysql.jdbc.Driver");
         Connection con = DriverManager.getConnection("jdbc:mysql:// localhost:3306/" + "game_db", "root", "Mal3k$aM");
         Statement stmt = con.createStatement();
-        String sql = "SELECT * FROM games WHERE platform = 'Windows'";
+        String sql = "SELECT * FROM games WHERE platform = 'Playstation'";
         ResultSet rs = stmt.executeQuery(sql);
 
         response.setContentType("text/html");
@@ -45,7 +45,7 @@ public class windows extends HttpServlet
         out.println("<div class=\"switchsection\">");
         out.println("<div class=\"cards\">");
         out.println("<div class=\"switch-products\">");
-        out.println("<h1>PC Products</h1></div>");
+        out.println("<h1>Playstation 5 Products</h1></div>");
         while(rs.next()){                  
         out.println("<div class=\"card\">");
         out.println("<div class=\"image-section\">");
