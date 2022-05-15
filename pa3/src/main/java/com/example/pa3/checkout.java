@@ -95,7 +95,7 @@ public class checkout extends HttpServlet
 
                 "}");
             
-            out.println(" </script> <link rel=\"icon\" href=\"https://www.nicepng.com/png/full/96-961724_svg-transparent-download-dog-s-by-seng-hoong.png\"></head><body> <header> <nav> <img src=\"mainlogo.png\" alt=\"logo\"> <ul> <li><a href = \"home\">Home</a></li> <li><a href = \"about\">About Our Company</a></li> <li><a href = \"products\">Products</a></li> <li class = \"current\"><a href = \"checkout\">Check Out</a></li> </ul> <label id=\"hamburger\"> <i class=\"fas fa-bars\"></i> </label> </nav> </header>");
+            out.println(" </script> <link rel=\"icon\" href=\"https://www.nicepng.com/png/full/96-961724_svg-transparent-download-dog-s-by-seng-hoong.png\"></head><body> <header> <nav> <img src=\"mainlogo.png\" alt=\"logo\"> <ul> <li><a href = \"home.jsp\">Home</a></li> <li><a href = \"about.jsp\">About Our Company</a></li> <li><a href = \"products\">Products</a></li> <li class = \"current\"><a href = \"checkout\">Check Out</a></li> </ul> <label id=\"hamburger\"> <i class=\"fas fa-bars\"></i> </label> </nav> </header>");
             out.println("<div class=\"switchsection\">");
             out.println("<div class=\"cards\">");
             out.println("<div class=\"switch-products\">");

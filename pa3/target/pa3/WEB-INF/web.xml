@@ -2,7 +2,19 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>INF124-PA3</display-name>
   <welcome-file-list>
-    <welcome-file>home</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
-
+    <servlet>
+        <servlet-name>home</servlet-name>
+        <jsp-file>/home.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>about</servlet-name>
+        <servlet-class>about</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>about</servlet-name>
+        <url-pattern>/about/*</url-pattern>
+    </servlet-mapping>
 </web-app>
