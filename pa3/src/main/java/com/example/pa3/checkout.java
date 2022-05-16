@@ -93,9 +93,12 @@ public class checkout extends HttpServlet
                 "alert('Credit Card Year Must Be 4 Digits.');" +
                 "return false;}" +
 
-                "}");
+                "}" +
+                "function zipcodeCheck(value) {" +
+                "getTax(this.value);" +
+                "getPlace(this.value);}");
             
-            out.println(" </script> <link rel=\"icon\" href=\"https://www.nicepng.com/png/full/96-961724_svg-transparent-download-dog-s-by-seng-hoong.png\"></head><body> <header> <nav> <img src=\"mainlogo.png\" alt=\"logo\"> <ul> <li><a href = \"home.jsp\">Home</a></li> <li><a href = \"about.jsp\">About Our Company</a></li> <li><a href = \"products\">Products</a></li> <li class = \"current\"><a href = \"checkout\">Check Out</a></li> </ul> <label id=\"hamburger\"> <i class=\"fas fa-bars\"></i> </label> </nav> </header>");
+            out.println(" </script> <script type = \"text/JavaScript\" src =\"cityState.js\"></script><script type = \"text/JavaScript\" src =\"tax.js\"></script> <link rel=\"icon\" href=\"https://www.nicepng.com/png/full/96-961724_svg-transparent-download-dog-s-by-seng-hoong.png\"></head><body> <header> <nav> <img src=\"mainlogo.png\" alt=\"logo\"> <ul> <li><a href = \"home.jsp\">Home</a></li> <li><a href = \"about.jsp\">About Our Company</a></li> <li><a href = \"products\">Products</a></li> <li class = \"current\"><a href = \"checkout\">Check Out</a></li> </ul> <label id=\"hamburger\"> <i class=\"fas fa-bars\"></i> </label> </nav> </header>");
             out.println("<div class=\"switchsection\">");
             out.println("<div class=\"cards\">");
             out.println("<div class=\"switch-products\">");
@@ -134,7 +137,7 @@ public class checkout extends HttpServlet
                     }
                 }
 
-            out.println("<p>Total Price:"+totalprice+" </p> " + 
+            out.println("<p>Subtotal Price:"+totalprice+" </p> " + 
             "<br /> " + 
             "<a href='#' class='close'>&times;</a> " + 
             "<div class='content'> " + 
@@ -146,8 +149,8 @@ public class checkout extends HttpServlet
             "      action='submitform' " + 
             "      method='GET' " + 
             "    > " + 
-            "      <input type='hidden' name='quantity' value="+qty+" /> " + 
-            "      <input type='hidden' name='totprice' value="+totalprice+" /> " + 
+            "      <input type='hidden' name='quantity' value="+qty+" /> ");
+            out.println("<input type='hidden' id='totprice' name='totprice' value="+totalprice+" /> " + 
             "      <label>Full Name</label> " + 
             "      <input " + 
             "        type='text' " + 
@@ -172,26 +175,30 @@ public class checkout extends HttpServlet
             "        placeholder='Address' " + 
             "        required " + 
             "      /> " + 
-            "      <label>Shipping City</label> " + 
-            "      <input " + 
-            "        type='text' " + 
-            "        name='shipper_city' " + 
-            "        placeholder='Address City' " + 
-            "        required " + 
-            "      /> " + 
-            "      <label>Shipping State</label> " + 
-            "      <input " + 
-            "        type='text' " + 
-            "        name='shipper_state' " + 
-            "        placeholder='Address State' " + 
-            "        required " + 
-            "      /> " + 
             "      <label>Zip Code</label> " + 
             "      <input " + 
             "        type='text' " + 
             "        name='zipcode' " + 
             "        placeholder='Zip Code' " + 
             "        id='zipcode' " + 
+            "        onblur = \"getPlace(this.value)\"" +
+            "        required " + 
+            "      /> " + 
+            "      <label>Shipping City</label> " + 
+            "      <input " + 
+            "        type='text' " + 
+            "        name='shipper_city' " + 
+            "        id='shipper_city' " +
+            "        placeholder='Address City' " + 
+            "        required " + 
+            "      /> " + 
+            "      <label>Shipping State</label> " + 
+            "      <input " + 
+            "        type='text' " + 
+            "        name='shipper_state' " +
+            "        id ='shipper_state' " + 
+            "        placeholder='Address State' " + 
+            "        onblur = \"getTax(this.value)\"" +
             "        required " + 
             "      /> " + 
             "      <label>E-Mail Address</label> " + 
@@ -265,12 +272,18 @@ public class checkout extends HttpServlet
             "          <br /><br /> " + 
             "          <br /><br /> " + 
             "        </div> " + 
+
             "      </div> " + 
+            "<h2>Tax: <span name ='total_tax' id='total_tax'></span></h2>"+
+
+            "<h2>Total: <span name ='total_price' id='total_price' value="+totalprice+"></span></h2>"+
+
             "       <br /><br /> " + 
             "      <input type='submit' value='Submit' /> " + 
             "    </form> " + 
             "  </div> " + 
             "</div></div></div>" );
+
 
                         }
         catch(ClassNotFoundException e){
